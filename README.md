@@ -15,8 +15,9 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-Tugas 7 (Elemen Dasar Flutter)
 
+
+Tugas 7 (Elemen Dasar Flutter)
 
 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
 
@@ -117,3 +118,143 @@ Dengan memahami perbedaan antara const dan final, Anda dapat menulis kode Dart y
 - Dengan GridView.count, tata letak tombol ditata menjadi grid yang membuat tampilan lebih teratur dan tampak lebih profesional.
 - Menggunakan const untuk variabel seperti npm, name, dan className yang hanya diinisialisasi sekali namun dapat berubah pada runtime menggunakan final.
 - Terakhir, proyek diuji dengan Flutter Analysis dan Flutter Run untuk memastikan bahwa aplikasi berjalan lancar.
+
+
+
+
+
+Tugas 8 (Flutter Navigation, Layouts, Forms, and Input Elements)
+
+1. Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+
+Penggunaan const dalam Flutter memiliki beberapa keuntungan yang signifikan, terutama dalam konteks pengelolaan memori dan performa aplikasi. Berikut adalah penjelasan mengenai kegunaan, keuntungan, serta kapan sebaiknya menggunakan const.
+
+Kegunaan const di Flutter
+
+- Mendefinisikan Konstanta: const digunakan untuk mendeklarasikan nilai yang tidak dapat diubah setelah ditetapkan. Ini berarti bahwa objek yang diciptakan dengan const bersifat immutable, sehingga tidak bisa dimodifikasi setelah diciptakan.
+- Pengoptimalan Memori: Dengan menggunakan const, Flutter dapat mengoptimalkan penggunaan memori. Objek yang dideklarasikan sebagai const akan dibuat sekali dan dapat digunakan kembali di seluruh aplikasi. Ini mengurangi jumlah objek yang dibuat, sehingga menghemat RAM.
+- Waktu Kompilasi: Nilai dari variabel yang dideklarasikan dengan const diketahui pada waktu kompilasi, bukan saat runtime. Ini memungkinkan compiler untuk melakukan optimasi lebih baik pada kode yang dihasilkan.
+
+Keuntungan Menggunakan const
+
+- Efisiensi Memori: Mengurangi overhead memori karena objek yang sama tidak perlu dibuat berkali-kali. Misalnya, jika Anda memiliki beberapa widget yang identik, mendeklarasikannya sebagai const akan memastikan bahwa hanya satu instansi dari widget tersebut yang ada di memori.
+- Performa Lebih Baik: Karena objek const sudah ada saat kompilasi, aplikasi tidak perlu menghabiskan waktu untuk membuat objek baru saat dijalankan, sehingga meningkatkan kecepatan eksekusi.
+- Keamanan Nilai: Dengan menggunakan const, Anda menjamin bahwa nilai tersebut tidak akan berubah selama siklus hidup aplikasi, mengurangi kemungkinan bug yang disebabkan oleh perubahan nilai secara tidak sengaja.
+
+Kapan Sebaiknya Menggunakan const
+
+- Widget Statis: Gunakan const saat mendefinisikan widget yang tidak akan berubah selama siklus hidup aplikasi, seperti teks statis atau gambar yang sama digunakan di beberapa tempat1.
+- Konstanta Global: Ketika mendefinisikan nilai-nilai konstan global atau parameter tetap dalam aplikasi, seperti warna atau ukuran font tertentu.
+
+Kapan Sebaiknya Tidak Menggunakan const
+
+- Widget Dinamis: Jika widget Anda perlu berubah berdasarkan interaksi pengguna atau data yang dinamis (misalnya, data dari API), maka sebaiknya tidak menggunakan const. Dalam kasus ini, gunakan widget biasa tanpa const agar widget dapat diperbarui sesuai kebutuhan.
+- Objek yang Memiliki State: Untuk objek yang memiliki state atau perlu diperbarui secara berkala (seperti dalam StatefulWidget), penggunaan const tidak dianjurkan karena perubahan state akan memerlukan pembuatan ulang objek.
+
+Dengan memahami kapan dan bagaimana menggunakan const, pengembang Flutter dapat menulis kode yang lebih efisien dan responsif.
+
+
+
+2. Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+
+Penggunaan Row dan Column dalam Flutter adalah dasar dari layout yang memungkinkan pengembang untuk mengatur widget secara horizontal dan vertikal. Berikut adalah penjelasan dan perbandingan antara keduanya, serta contoh implementasi.
+
+Perbandingan Row dan Column
+
+Arah Penataan
+- Row: Mengatur widget anak secara horizontal dari kiri ke kanan.
+- Column: Mengatur widget anak secara vertikal dari atas ke bawah.
+
+Main Axis dan Cross Axis
+- Row:
+Main Axis: Horizontal
+Cross Axis: Vertikal
+- Column:
+Main Axis: Vertikal
+Cross Axis: Horizontal
+
+Properti Penataan
+Keduanya memiliki properti yang sama untuk penataan, seperti:
+- mainAxisAlignment: Menentukan bagaimana widget anak diatur sepanjang sumbu utama (misalnya, start, end, center, spaceBetween, spaceAround, spaceEvenly).
+- crossAxisAlignment: Menentukan bagaimana widget anak diatur sepanjang sumbu silang.
+
+Contoh 1: Menggunakan Row
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Contoh Row')),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(width: 50, height: 50, color: Colors.red),
+            Container(width: 50, height: 50, color: Colors.green),
+            Container(width: 50, height: 50, color: Colors.blue),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Pada contoh di atas, tiga kontainer berwarna disusun secara horizontal dengan ruang yang sama di antara mereka menggunakan MainAxisAlignment.spaceEvenly.
+
+Contoh 2: Menggunakan Column
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Contoh Column')),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(width: 50, height: 50, color: Colors.red),
+            Container(width: 50, height: 50, color: Colors.green),
+            Container(width: 50, height: 50, color: Colors.blue),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Dalam contoh ini, tiga kontainer berwarna disusun secara vertikal dengan ruang yang sama di antara mereka menggunakan MainAxisAlignment.spaceEvenly.
+
+
+
+3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+
+4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+
+
+5. Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+Menangani navigasi dalam aplikasi Flutter yang memiliki banyak halaman (routes) dapat dilakukan dengan menggunakan kelas Navigator. Kelas ini memungkinkan pengembang untuk mengelola transisi antar halaman dengan cara yang terstruktur dan efisien. Berikut adalah cara umum untuk menangani navigasi di Flutter, termasuk contoh implementasi.
+
+Dasar-Dasar Navigasi di Flutter
+
+Routes
+Dalam Flutter, setiap halaman disebut sebagai route. Anda dapat membuat route baru dengan mendefinisikan widget yang akan ditampilkan saat navigasi dilakukan.
+
+Navigator
+Kelas Navigator bertanggung jawab untuk mengelola stack dari routes. Metode utama yang digunakan untuk navigasi adalah:
+- Navigator.push(): Menambahkan route baru ke stack.
+- Navigator.pop(): Menghapus route teratas dari stack, kembali ke route sebelumnya.
