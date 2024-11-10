@@ -240,8 +240,27 @@ Dalam contoh ini, tiga kontainer berwarna disusun secara vertikal dengan ruang y
 
 3. Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
 
+Input yang digunakan:
+- TextFormField untuk "Name": Mengambil input nama produk dengan validator agar tidak kosong.
+- TextFormField untuk "Amount": Mengambil input amount dan harus berupa int.
+- TextFormField untuk "description": Mengambil input description lengkap dengan validator.
+
+Input yang tidak digunakan:
+- Checkbox: Digunakan untuk pilihan antara ya atau tidak.
+- RadioButton: Digunakan untuk memilih satu opsi dari beberapa pilihan.
+- DropDownButton: Menyediakan daftar pilihan dalam format dropdown.
+- Slider: Mengatur nilai di dalam rentang tertentu.
+- Switch: Menyediakan opsi hidup/mati untuk suatu pengaturan.
+- DatePicker dan TimePicker: Memungkinkan pengguna memilih tanggal atau waktu tertentu.
+
+
 
 4. Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+Untuk menjaga konsistensi tema dalam aplikasi Flutter, ThemeData dapat diterapkan dalam MaterialApp. ThemeData memungkinkan pengaturan warna, font, ukuran teks, serta elemen UI lainnya sehingga tampilan aplikasi menjadi lebih seragam.
+
+Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+Ya, Untuk memastikan bahwa gaya warna dan elemen UI konsisten di seluruh tampilan, primaryColor dan skema warna ditetapkan di ThemeData.
 
 
 
